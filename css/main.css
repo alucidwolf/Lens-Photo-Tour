@@ -72,8 +72,8 @@ body {
 	margin: 0;
 	margin-right: auto;
 	margin-left: auto;
-	width: 99.9%;
-	height: 99.9%;
+	width: 100%;
+	height: 100%;
 	max-width: 100%;
 	max-height: 100%;
 }
@@ -109,8 +109,8 @@ body {
 .close.closeModal{
 	color: #fff;
 	position: absolute;
-	left: 15px;
-	top: 15px;
+	left: 10px;
+	top: 10px;
 	opacity: .8;
 	font-size: 36px;
 	z-index: 1;
@@ -118,15 +118,18 @@ body {
 .close.FullScreenModal{
 	color: #fff;
 	position: absolute;
-	left: 65px;
-	top: 15px;
+	left: 60px;
+	top: 12px;
 	opacity: .8;
-	font-size: 36px;
+	font-size: 30px;
 	z-index: 1;
 }
 .close:hover, .close:focus{
 	color: #ccc;
 	opacity: .5;
+}
+#main.overflowMeYAxis{
+	overflow-y: hidden;
 }
 
 @media screen and (max-width: 480px) {
@@ -732,19 +735,13 @@ dl dd {
 }
 
 #main .toggle {
-    -webkit-tap-highlight-color: transparent;
     position: absolute;
     top: 0;
     width: 4em;
     height: 4em;
-    background-image: url("images/open-small-alt.svg");
-    background-repeat: no-repeat;
-    background-size: 32px 32px;
     cursor: pointer;
     display: none;
     z-index: 1;
-    background-position: 0.5em 0.5em;
-    left: 0;
 }
 
 .modal-body.fullscreen #main {
@@ -768,7 +765,7 @@ dl dd {
 
 @media screen and (max-width: 980px) {
     #main {
-        background: rgba(255, 255, 255, 0.925);
+        background: rgba(255, 255, 255, 0.5);
     }
     #main .toggle {
         display: block;
@@ -892,7 +889,7 @@ dl dd {
     top: 0;
     width: 100%;
     height: 100%;
-    box-shadow: inset 0 0 0 2px #00D3B7, inset 0 0 0px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 0 2px #fff, inset 0 0 0px 3px rgba(0, 0, 0, 0.15);
     opacity: 0;
     z-index: 1;
 }
@@ -1028,15 +1025,12 @@ dl dd {
     -webkit-tap-highlight-color: transparent;
     position: absolute;
     top: 0;
-    width: 4em;
-    height: 4em;
-    background-image: url("images/open.svg");
-    background-repeat: no-repeat;
-    background-size: 64px 64px;
     cursor: pointer;
     z-index: 1;
-    right: 0;
-    background-position: calc(100% - 0.75em) 0.75em;
+    right: 5px;
+		font-size: 25px;
+		color: #fff;
+		opacity: .8;
 }
 
 #viewer .inner .nav-next, #viewer .inner .nav-previous {
@@ -1148,10 +1142,6 @@ dl dd {
     width: 100%;
 }
 
-.modal-body.fullscreen #viewer .inner .toggle {
-    background-image: url("images/open.svg");
-}
-
 .modal-body.is-loading-1 #viewer {
     opacity: 0;
 }
@@ -1175,9 +1165,9 @@ dl dd {
         -webkit-transition: opacity 0.75s ease;
         -ms-transition: opacity 0.75s ease;
         transition: opacity 0.75s ease;
-        background-image: url("images/open.svg");
         opacity: 0;
-        right: 0;
+        right: 10px;
+				top: 10px;
     }
     .modal-body.fullscreen #viewer .inner .toggle {
         opacity: 1;
@@ -1185,15 +1175,9 @@ dl dd {
 }
 
 @media screen and (max-width: 736px) {
-    #viewer .inner .toggle {
-        background-size: 32px 32px;
-    }
     #viewer .inner .nav-next, #viewer .inner .nav-previous {
         background-image: url("images/arrow-small.svg");
         background-size: 32px 32px;
-    }
-    .modal-body.fullscreen #viewer .inner .toggle {
-        background-image: url("images/open-small.svg");
     }
 }
 
@@ -1208,10 +1192,6 @@ dl dd {
         -ms-transition-delay: 0s;
         transition-delay: 0s;
         opacity: 0;
-    }
-    #viewer .inner .toggle {
-        background-image: url("images/open-small.svg") !important;
-        background-size: 32px 32px;
     }
     .modal-body.fullscreen #viewer {
         -moz-transition-delay: 0.5s;

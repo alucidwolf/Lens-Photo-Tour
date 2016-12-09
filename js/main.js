@@ -783,15 +783,18 @@ var main = (function($) {
 $('#ptLens').on('show.bs.modal', function() {
     var cHeight = document.documentElement.clientHeight;
     		cWidth = document.documentElement.clientWidth;
-		if(cWidth < 768){
+		if(cWidth < 992){
 			$('.modal-dialog').toggleClass('modal-fullscreen');
 			$('.FullScreenModal').hide();
 		}
 });
 $('#ptLens').on('shown.bs.modal', function() {
     main.init();
+		$('.toggle span').click(function(){
+			$('#main').toggleClass('overflowMeYAxis')
+			console.log('toggle clicked');
+		});
 });
-
 function toggleFullScreenModal() {
     $('.modal-dialog').toggleClass('modal-fullscreen');
     if ($('.glyphicon').hasClass('glyphicon-fullscreen')) {
