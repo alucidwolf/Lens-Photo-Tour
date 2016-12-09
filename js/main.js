@@ -790,22 +790,32 @@ $('#ptLens').on('show.bs.modal', function() {
 });
 $('#ptLens').on('shown.bs.modal', function() {
     main.init();
+		var cHeight = document.documentElement.clientHeight;
+    cWidth = document.documentElement.clientWidth;
     $('.toggle span').click(function() {
-        $('#main').toggleClass('overflowMeYAxis')
+			if(cWidth <= 980){
+				if($('#main').hasClass('overflowMeYAxis')){
+					$('#main').removeClass('overflowMeYAxis')
+				}
+			} else {
+				$('#main').toggleClass('overflowMeYAxis')
         console.log('toggle clicked');
+			}
     });
 });
 $(window).on('orientationchange', function() {
     var cHeight = document.documentElement.clientHeight;
     cWidth = document.documentElement.clientWidth;
-    if (cWidth < 992) {
+
+    if (cWidth < 980) {
 			if($('.modal-dialog').hasClass('modal-fullscreen')){
 				$('.FullScreenModal').hide();
-			} else {
+			}
+			 else {
 				$('.modal-dialog').toggleClass('modal-fullscreen');
         $('.FullScreenModal').hide();
 			}
-    } else if (cWidth > 991){
+    } else if (cWidth > 980){
 			$('.FullScreenModal').show();
 		}
 })
