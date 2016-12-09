@@ -782,24 +782,34 @@ var main = (function($) {
 //begin custom js for modal
 $('#ptLens').on('show.bs.modal', function() {
     var cHeight = document.documentElement.clientHeight;
-    		cWidth = document.documentElement.clientWidth;
-		if(cWidth < 992){
-			$('.modal-dialog').toggleClass('modal-fullscreen');
-			$('.FullScreenModal').hide();
-		}
+    cWidth = document.documentElement.clientWidth;
+    if (cWidth < 992) {
+        $('.modal-dialog').toggleClass('modal-fullscreen');
+        $('.FullScreenModal').hide();
+    }
 });
 $('#ptLens').on('shown.bs.modal', function() {
     main.init();
-		$('.toggle span').click(function(){
-			$('#main').toggleClass('overflowMeYAxis')
-			console.log('toggle clicked');
-		});
+    $('.toggle span').click(function() {
+        $('#main').toggleClass('overflowMeYAxis')
+        console.log('toggle clicked');
+    });
 });
+$(window).on('orientationchange', function() {
+    var cHeight = document.documentElement.clientHeight;
+    cWidth = document.documentElement.clientWidth;
+    if (cWidth < 992) {
+			if($('.modal-dialog').hasClass('modal-fullscreen')){
+				$('.FullScreenModal').hide();
+			} else {
+				$('.modal-dialog').toggleClass('modal-fullscreen');
+        $('.FullScreenModal').hide();
+			}
+    } else if (cWidth > 991){
+			$('.FullScreenModal').show();
+		}
+})
+
 function toggleFullScreenModal() {
     $('.modal-dialog').toggleClass('modal-fullscreen');
-    if ($('.glyphicon').hasClass('glyphicon-fullscreen')) {
-        $('.glyphicon-fullscreen').removeClass('glyphicon-fullscreen').addClass('glyphicon-resize-small');
-    } else if ($('.glyphicon').hasClass('glyphicon-resize-small')) {
-        $('.glyphicon-resize-small').removeClass('glyphicon-resize-small').addClass('glyphicon-fullscreen');
-    }
 }
