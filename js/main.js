@@ -780,8 +780,8 @@ var main = (function($) {
 //end creation of slideshow
 
 //begin custom js for modal
-var cWidth = document.documentElement.clientWidth;
 $('#ptLens').on('show.bs.modal', function() {
+	var cWidth = document.documentElement.clientWidth;
     if (cWidth < 992) {
         $('.modal-dialog').toggleClass('modal-fullscreen');
         $('.FullScreenModal').hide();
@@ -794,6 +794,7 @@ $('#ptLens').on('show.bs.modal', function() {
 });
 $('#ptLens').on('shown.bs.modal', function() {
 	//only initialize the lens gallery if it does not exist already
+	var cWidth = document.documentElement.clientWidth;
     if ($('#viewer').length > 0) {
         //do nothing
     } else {
@@ -805,11 +806,12 @@ $('#ptLens').on('shown.bs.modal', function() {
                 $('#main').removeClass('overflowMeYAxis')
             }
         } else {
-            $('#main').toggleClass('overflowMeYAxis')            
+            $('#main').toggleClass('overflowMeYAxis')
         }
     });
 });
 $(window).on('orientationchange', function() {
+	var cWidth = document.documentElement.clientWidth;
     if (cWidth < 980) {
         if ($('.modal-dialog').hasClass('modal-fullscreen')) {
             $('.FullScreenModal').hide();
