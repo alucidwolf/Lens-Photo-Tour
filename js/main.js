@@ -150,9 +150,9 @@ var main = (function($) {
             _.$viewer = $(
                 '<div id="viewer">' +
                 '<div class="inner">' +
-                '<div class="nav-next"></div>' +
-                '<div class="nav-previous"></div>' +
-                '<div class="toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></div>' +
+                '<div class="nav-next"><span class="lnr lnr-chevron-right"></span></div>' +
+                '<div class="nav-previous"><span class="lnr lnr-chevron-left"></span></div>' +
+                '<div class="toggle"><span class="lnr lnr-menu"></span></div>' +
                 '</div>' +
                 '</div>'
             ).appendTo(_.$body);
@@ -780,44 +780,46 @@ var main = (function($) {
 //end creation of slideshow
 
 //begin custom js for modal
+var cWidth = document.documentElement.clientWidth;
 $('#ptLens').on('show.bs.modal', function() {
-    var cHeight = document.documentElement.clientHeight;
-    cWidth = document.documentElement.clientWidth;
     if (cWidth < 992) {
         $('.modal-dialog').toggleClass('modal-fullscreen');
         $('.FullScreenModal').hide();
+        if ($('.modal-dialog').hasClass('modal-fullscreen')) {
+            //do nothing
+        } else {
+            $('.modal-dialog').addClass('modal-fullscreen')
+        }
     }
 });
 $('#ptLens').on('shown.bs.modal', function() {
-    main.init();
-		var cHeight = document.documentElement.clientHeight;
-    cWidth = document.documentElement.clientWidth;
+	//only initialize the lens gallery if it does not exist already
+    if ($('#viewer').length > 0) {
+        //do nothing
+    } else {
+        main.init();
+    }
     $('.toggle span').click(function() {
-			if(cWidth <= 980){
-				if($('#main').hasClass('overflowMeYAxis')){
-					$('#main').removeClass('overflowMeYAxis')
-				}
-			} else {
-				$('#main').toggleClass('overflowMeYAxis')
-        console.log('toggle clicked');
-			}
+        if (cWidth < 980) {
+            if ($('#main').hasClass('overflowMeYAxis')) {
+                $('#main').removeClass('overflowMeYAxis')
+            }
+        } else {
+            $('#main').toggleClass('overflowMeYAxis')            
+        }
     });
 });
 $(window).on('orientationchange', function() {
-    var cHeight = document.documentElement.clientHeight;
-    cWidth = document.documentElement.clientWidth;
-
     if (cWidth < 980) {
-			if($('.modal-dialog').hasClass('modal-fullscreen')){
-				$('.FullScreenModal').hide();
-			}
-			 else {
-				$('.modal-dialog').toggleClass('modal-fullscreen');
-        $('.FullScreenModal').hide();
-			}
-    } else if (cWidth > 980){
-			$('.FullScreenModal').show();
-		}
+        if ($('.modal-dialog').hasClass('modal-fullscreen')) {
+            $('.FullScreenModal').hide();
+        } else {
+            $('.modal-dialog').toggleClass('modal-fullscreen');
+            $('.FullScreenModal').hide();
+        }
+    } else if (cWidth > 980) {
+        $('.FullScreenModal').show();
+    }
 })
 
 function toggleFullScreenModal() {
