@@ -1,6 +1,8 @@
 
 /* Basic */
-
+body{
+	-webkit-overflow-scrolling: touch;
+}
 .modal-fullscreen.modal-dialog{
 	margin: 0;
 	margin-right: auto;
