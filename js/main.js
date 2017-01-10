@@ -818,6 +818,7 @@ $(window).on('orientationchange', function() {
         } else {
             $('.modal-dialog').toggleClass('modal-fullscreen');
             $('.FullScreenModal').hide();
+            window.scrollTo(0,1);
         }
     } else if (cWidth > 980) {
         $('.FullScreenModal').show();
