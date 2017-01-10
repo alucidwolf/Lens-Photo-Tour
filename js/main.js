@@ -815,12 +815,15 @@ $(window).on('orientationchange', function() {
     if (cWidth < 980) {
         if ($('.modal-dialog').hasClass('modal-fullscreen')) {
             $('.FullScreenModal').hide();
+            alert(screen.orientation);
         } else {
             $('.modal-dialog').toggleClass('modal-fullscreen');
             $('.FullScreenModal').hide();
+            alert(screen.orientation);
         }
     } else if (cWidth > 980) {
         $('.FullScreenModal').show();
+        alert(screen.orientation);
     }
 })
 
