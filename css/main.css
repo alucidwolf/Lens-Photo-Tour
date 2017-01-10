@@ -573,3 +573,9 @@ article a:hover {
 		min-height: 494px;
 	}
 }
+
+@media screen and (orientation:landscape){
+	.modal-fullscreen.modal-dialog{
+		height: 90%;
+	}
+}
