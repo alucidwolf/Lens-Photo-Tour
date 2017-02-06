@@ -573,3 +573,13 @@ article a:hover {
 		min-height: 494px;
 	}
 }
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+		#viewer .slide{
+			top:30%;
+			height: 40%;
+		}
+}
