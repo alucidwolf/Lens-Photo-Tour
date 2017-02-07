@@ -57,6 +57,15 @@ body.modal-open .modal{
 	font-size: 36px;
 	z-index: 1;
 }
+.close.play-stop{
+	color: #fff;
+	position: absolute;
+	left: 105px;
+	top: 14px;
+	opacity: .8;
+	font-size: 28px;
+	z-index: 1;
+}
 .close.FullScreenModal{
 	color: #fff;
 	position: absolute;

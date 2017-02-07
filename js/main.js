@@ -3,7 +3,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
+var phototourIntervalTransitionValue = phototourIntervalTransitionValue || 6000;
 var main = (function($) {
     var _ = {
 
@@ -150,7 +150,7 @@ var main = (function($) {
             _.$viewer = $(
                 '<div id="viewer">' +
                 '<div class="inner">' +
-                '<div class="nav-next"><span class="lnr lnr-chevron-right"></span></div>' +
+                '<div id="nextClickControl" class="nav-next"><span class="lnr lnr-chevron-right"></span></div>' +
                 '<div class="nav-previous"><span class="lnr lnr-chevron-left"></span></div>' +
                 '<div class="toggle"><span class="lnr lnr-menu"></span></div>' +
                 '</div>' +
@@ -780,6 +780,10 @@ var main = (function($) {
 //end creation of slideshow
 
 //begin custom js for modal
+function openPTModal(){
+  $('#ptLens').modal();
+}
+
 $('#ptLens').on('show.bs.modal', function() {
 	var cWidth = document.documentElement.clientWidth;
     if (cWidth < 992) {
@@ -793,12 +797,24 @@ $('#ptLens').on('show.bs.modal', function() {
     }
 });
 $('#ptLens').on('shown.bs.modal', function() {
+  var refreshInterval;
 	//only initialize the lens gallery if it does not exist already
 	var cWidth = document.documentElement.clientWidth;
     if ($('#viewer').length > 0) {
         //do nothing
     } else {
         main.init();
+        refreshInterval = setInterval(function(){document.getElementById('nextClickControl').click();}, phototourIntervalTransitionValue);
+        $('#autoplayToggleId').on('click',function(){
+          $(this).find('.glyphicon').toggleClass('glyphicon-play glyphicon-pause');
+          if($(this).find('.glyphicon').hasClass('glyphicon-pause')){
+            refreshInterval = setInterval(function(){document.getElementById('nextClickControl').click();}, phototourIntervalTransitionValue);
+            console.log("interval started");
+          } else{
+            clearInterval(refreshInterval);
+            console.log("clear interval");
+          }
+        });
     }
     $('.toggle span').click(function() {
         if (cWidth < 980) {

@@ -28,7 +28,7 @@
             <div class="container">
                 <h1>Full Screen Lens Photo Tour</h1>
                 <p>by alucidwolf</p>
-                <p><button class="btn btn-primary" data-toggle="modal" data-target="#ptLens" data-backdrop="static" data-keyboard="false">Photo Tour Lens, Click Me!</button></p>
+                <p><button class="btn btn-primary" onclick=openPTModal(); data-backdrop="static" data-keyboard="false">Photo Tour Lens, Click Me!</button></p>
             </div>
         </div>
         <h1>Headings to represent scrolling page</h1>
@@ -52,6 +52,7 @@
     <div class="modal fade" id="ptLens" tabindex="-1" role="dialog" aria-labelledby="ptLensLabel" aria-hidden="true">
         <button type="button" class="close closeModal" data-dismiss="modal"><span class="lnr lnr-cross"></span></button>
         <button type="button" class="close FullScreenModal" id="idFullScreenModal" onclick="toggleFullScreenModal()"><span class="lnr lnr-frame-expand"></span></button>
+        <button type="button" class="close play-stop" id="autoplayToggleId"><span class="glyphicon glyphicon-pause"></span></button>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -165,6 +166,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/skel.min.js"></script>
+
+    <!-- the below line should be added and the intervalValue adjusted to match the requested duration -->
+    <!-- <script type="text/javascript">var phototourIntervalTransitionValue = 10000;</script> -->
+
     <script src="js/main.min.js"></script>
 </body>
 </html>
