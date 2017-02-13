@@ -57,22 +57,22 @@ body.modal-open .modal{
 	font-size: 36px;
 	z-index: 1;
 }
-.close.play-stop{
-	color: #fff;
-	position: absolute;
-	left: 105px;
-	top: 14px;
-	opacity: .8;
-	font-size: 28px;
-	z-index: 1;
-}
 .close.FullScreenModal{
 	color: #fff;
 	position: absolute;
-	left: 60px;
+	left: 105px;
 	top: 12px;
 	opacity: .8;
 	font-size: 33px;
+	z-index: 1;
+}
+.close.play-stop{
+	color: #fff;
+	position: absolute;
+	left: 60px;
+	top: 14px;
+	opacity: .8;
+	font-size: 28px;
 	z-index: 1;
 }
 .close:hover, .close:focus{
@@ -582,11 +582,9 @@ article a:hover {
 		min-height: 494px;
 	}
 }
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 736px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
+@media only all
+  and (min-width: 320px)
+  and (max-width: 736px){
 		#viewer .slide{
 			top:30%;
 			height: 40%;
