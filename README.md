@@ -1,5 +1,5 @@
 # Lens-Photo-Tour
 
-Full screen photo tour
+Full Screen Photo Tour
 
 https://alucidwolf.github.io/lenspt/
